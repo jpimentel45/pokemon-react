@@ -26,44 +26,45 @@ function Encounter() {
     //alert cant run 
     // attack? have pokemon attack : pokemon runs away
     //encouter random
-    const encounterWildPokemon = () => {
-        {
+    const encounterWildPokemon = () => { 
             alert('Oh shit! A Poochemon wants to fight!')
-            axios.get(`https://pokeapi.co/api/v2/pokemon/${pokeId()}`)
+            axios
+                .get(`https://pokeapi.co/api/v2/pokemon/${pokeId()}`)
                 .then(response => {
                     console.log(response.data)
                     setWildPokemon(response.data)
-                    { (alert(`Encountered ${response.data.name}, Let's BATALlll!!!`)) }
+                    alert(`Encountered ${response.data.name.toUpperCase()}, Let's BATALlll!!!`)
                 })
-
-        }
     }
     //Generate random number if not 0 it will escape
     const wildEscapes = () => {
         const min = 0
-        const max = 3
+        const max = 5
         return Math.floor(Math.random() * (max - min)) + min
     }
+    const poke = `${wildPokemon.name}`.toLowerCase().split(' ')
+        .map(word => word[0].toUpperCase() + word.substr(1))
+        .join(' ')
 
     //function to dodge & escape catch if wildEscaped != 0
     const escaped = () => {
-        alert(`${wildPokemon.name} Ran away from PokeBall`)
+        alert(`${poke} Ran away from PokeBall`)
         encounterWildPokemon()
     }
     //Pokemon escapes after failing to catch 
     const fleeSuccess = () => {
-        alert(`${wildPokemon.name} Got Out of PokeBall and Ran away`)
+        alert(`${poke} Got Out of PokeBall and Ran away`)
         encounterWildPokemon()
     }
 
     //Escape after pokeball?
     const escapeBall = () => {
         const min = 0
-        const max = 3
+        const max = 4
         const fleeBall = Math.floor(Math.random() * (max - min)) + min
         fleeBall === 0 ?
             fleeSuccess()
-            : alert(`${wildPokemon.name} Got Out of PokeBall`)
+            : alert(`${poke} Got Out of PokeBall`)
     }
 
     //Run away successfully
@@ -77,7 +78,7 @@ function Encounter() {
         const max = 2
         const willRun = Math.floor(Math.random() * (max - min)) + min
         willRun === 0 ?
-            ranSuccess() : alert(`You can't run from ${wildPokemon.name}`)
+            ranSuccess() : alert(`You can't run from ${poke}`)
     }
 
 
@@ -101,7 +102,7 @@ function Encounter() {
                     if (!monExists) {
                         state = [...state, pokemon]
                         state.sort((a, b) => a.id - b.id)
-                        alert(`Caught ${wildPokemon.name}`)
+                        alert(`Caught ${poke}`)
                     }
                     //if does exist encounter new
                     //de
@@ -141,10 +142,10 @@ function Encounter() {
             </header>
             <section className='wild-pokemon'>
                 <h2>Wild Pokemon</h2>
-                <img src={`https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/${wildPokemon.id}.png`} className='sprite' />
+                <img src={`https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/${wildPokemon.id}.png`} alt='' className='sprite' />
                 <h3>{wildPokemon.name}</h3>
-                <button className='catch-btn' onClick={() => catchPokemon(wildPokemon)}>CATCH!!!!!!!</button>
-                <button className='catch-btn' onClick={() => run()}>RUN!!!</button>
+                <button className='catch-btn' onClick={() => catchPokemon(wildPokemon)}>CATCH</button>
+                <button className='catch-btn' onClick={() => run()}>RUN</button>
             </section>
 
             <section className='pokedex'>
@@ -152,7 +153,7 @@ function Encounter() {
                 <div className='pokedex-list'>
                     {pokedex.map(pokemon => (
                         <div className="pokemon" key={pokemon.id}>
-                            <img src={`https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/${pokemon.id}.png`} className='sprite' />
+                            <img src={`https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/${pokemon.id}.png`} alt='' className='sprite' />
                             <h3 className='pokemon-name'>{pokemon.name}</h3>
 
                             <button className="remove" onClick={() => releasePokemon(pokemon.id)}>&times;</button>
