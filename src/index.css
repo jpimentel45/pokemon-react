@@ -47,7 +47,7 @@ header {
 }
 
 .wild-pokemon {
-  min-height: 300px;
+  /* min-height: 300px; */
   background: firebrick;
   padding: 15px;
   flex-wrap: wrap;
@@ -65,7 +65,7 @@ header {
 
 .wild-pokemon .sprite {
   display: block;
-  width: 150px;
+  /* width: 150px; */
   margin: 0px auto;
 }
 
@@ -100,6 +100,9 @@ header {
   display: flex;
   flex-flow: column;
 }
+.pokedex h2 {
+   text-align: center;
+}
 
 .pokedex-list {
   width: 100%;
@@ -116,6 +119,7 @@ header {
   min-height: 150px;
   padding: 15px;
   background: #F3F3F3;
+  text-align: center;
 }
 
 .pokedex-list .pokemon .remove {
@@ -135,5 +139,5 @@ header {
 }
 
 .pokedex-list .pokemon .sprite {
-  width: 100%;
+     height: 100%;
 }

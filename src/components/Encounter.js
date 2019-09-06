@@ -33,7 +33,10 @@ function Encounter() {
                 .then(response => {
                     console.log(response.data)
                     setWildPokemon(response.data)
-                    alert(`Encountered ${response.data.name.toUpperCase()}, Let's BATALlll!!!`)
+                    const wild = `${response.data.name}`.toLowerCase().split(' ')
+                        .map(word => word[0].toUpperCase() + word.substr(1))
+                        .join(' ')
+                    alert(`Encountered ${wild}, Let's BATALlll!!!`)
                 })
     }
     //Generate random number if not 0 it will escape
@@ -136,10 +139,13 @@ function Encounter() {
     return (
         //render(
         <div className="app-wrapper">
-            <header>
+        {  
+              /* <header>
                 <h1 className='title'> React Hooks</h1>
                 <h3 className='subtitle'>With PoKemon</h3>
             </header>
+            */
+        }
             <section className='wild-pokemon'>
                 <h2>Wild Pokemon</h2>
                 <img src={`https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/${wildPokemon.id}.png`} alt='' className='sprite' />
