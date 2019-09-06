@@ -94,6 +94,23 @@ header {
   background: #F7A800;
 }
 
+.pokeline {
+   height: 5%;
+    place-items: center;
+    text-align: center;
+    background: black;
+}
+.pokedot {
+    bottom: 20%;
+    width: 5%;
+    color: black;
+    margin: auto;
+    border-radius: 50% 50%;
+    background: black;
+    position: relative;
+    padding: 1%;
+}
+
 .pokedex {
   flex: 1;
   padding: 15px;

@@ -153,7 +153,9 @@ function Encounter() {
                 <button className='catch-btn' onClick={() => catchPokemon(wildPokemon)}>CATCH</button>
                 <button className='catch-btn' onClick={() => run()}>RUN</button>
             </section>
-
+<section className='pokeline'>
+<h1 className='pokedot'>.</h1>
+</section>
             <section className='pokedex'>
                 <h2>Pokedex</h2>
                 <div className='pokedex-list'>
