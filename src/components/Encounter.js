@@ -12,7 +12,7 @@ function Encounter() {
     //after deleting each pokemon remove pokedex from useEffect
     //only thing useEffect wont run after successfully catching pokemon
     //[pokedex] || [] chose one and set on useEffect
-    useEffect(() => { encounterWildPokemon() }, [pokedex])
+    useEffect(() => { encounterWildPokemon() }, [])
 
     //Get random pokemon id
     const pokeId = () => {
@@ -150,8 +150,11 @@ function Encounter() {
                 <h2>Wild Pokemon</h2>
                 <img src={`https://raw.githubusercontent.com/PokeApi/sprites/master/sprites/pokemon/${wildPokemon.id}.png`} alt='' className='sprite' />
                 <h3>{wildPokemon.name}</h3>
+                <div className='butts'>
+                <button className='catch-btn' onClick={() => encounterWildPokemon()}>Encounter</button>
                 <button className='catch-btn' onClick={() => catchPokemon(wildPokemon)}>CATCH</button>
                 <button className='catch-btn' onClick={() => run()}>RUN</button>
+                </div>
             </section>
 <section className='pokeline'>
 <h1 className='pokedot'>.</h1>
